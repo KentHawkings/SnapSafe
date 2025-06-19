@@ -41,6 +41,12 @@ defmodule SnapSafeWeb.AuthController do
     end
   end
 
+  def login(conn, _params) do
+    conn
+    |> put_status(:bad_request)
+    |> json(%{error: "Email and password are required"})
+  end
+
   defp format_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->
