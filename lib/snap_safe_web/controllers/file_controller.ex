@@ -13,16 +13,7 @@ defmodule SnapSafeWeb.FileController do
       {:ok, file} ->
         conn
         |> put_status(:created)
-        |> json(%{
-          message: "File uploaded successfully",
-          file: %{
-            id: file.id,
-            filename: file.filename,
-            content_type: file.content_type,
-            size: file.size,
-            uploaded_at: file.inserted_at
-          }
-        })
+        |> render(:show, file: file)
 
       {:error, reason} ->
         conn

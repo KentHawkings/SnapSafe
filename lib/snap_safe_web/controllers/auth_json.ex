@@ -5,8 +5,8 @@ defmodule SnapSafeWeb.AuthJSON do
 
   alias SnapSafe.Accounts.User
 
-  @spec data(User.t()) :: map()
-  def data(%User{} = user) do
+  @spec show(map()) :: map()
+  def show(%{user: %User{} = user}) do
     %{
       id: user.id,
       email: user.email

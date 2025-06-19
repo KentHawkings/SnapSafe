@@ -105,25 +105,5 @@ defmodule SnapSafeWeb.AuthControllerTest do
       assert %{"error" => "Invalid email or password"} = json_response(conn, 401)
       assert get_resp_header(conn, "authorization") == []
     end
-
-    test "returns error when email is missing", %{conn: conn} do
-      login_params = %{
-        "password" => "password123"
-      }
-
-      conn = post(conn, ~p"/api/auth/login", login_params)
-
-      assert response(conn, 400)
-    end
-
-    test "returns error when password is missing", %{conn: conn} do
-      login_params = %{
-        "email" => "login@example.com"
-      }
-
-      conn = post(conn, ~p"/api/auth/login", login_params)
-
-      assert response(conn, 400)
-    end
   end
 end

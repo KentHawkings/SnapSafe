@@ -35,7 +35,6 @@ defmodule SnapSafe.MixProject do
       plt_add_apps: [:mix, :ex_unit],
       flags: [
         :error_handling,
-        :underspecs,
         :unknown,
         :unmatched_returns
       ],

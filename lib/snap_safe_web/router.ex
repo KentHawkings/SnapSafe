@@ -16,7 +16,7 @@ defmodule SnapSafeWeb.Router do
     plug SnapSafeWeb.AuthPlug
   end
 
-  scope "/api", SnapSafeWeb do
+  scope "/api/auth", SnapSafeWeb do
     pipe_through :api
 
     # Authentication routes (no authentication required)
