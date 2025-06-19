@@ -23,6 +23,7 @@ defmodule SnapSafe.FilesTest do
 
     test "create_file/1 with valid data creates a file" do
       user = user_fixture()
+
       valid_attrs = %{
         size: 42,
         filename: "test.txt",

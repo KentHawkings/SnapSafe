@@ -12,15 +12,9 @@ defmodule SnapSafeWeb.AuthController do
         {:ok, token, _claims} = Guardian.encode_and_sign(user)
 
         conn
+        |> put_resp_header("authorization", "Bearer #{token}")
         |> put_status(:created)
-        |> json(%{
-          message: "User created successfully",
-          token: token,
-          user: %{
-            id: user.id,
-            email: user.email
-          }
-        })
+        |> render(:show, user: user)
 
       {:error, changeset} ->
         conn
@@ -35,14 +29,8 @@ defmodule SnapSafeWeb.AuthController do
         {:ok, token, _claims} = Guardian.encode_and_sign(user)
 
         conn
-        |> json(%{
-          message: "Login successful",
-          token: token,
-          user: %{
-            id: user.id,
-            email: user.email
-          }
-        })
+        |> put_resp_header("authorization", "Bearer #{token}")
+        |> render(:show, user: user)
 
       {:error, :invalid_credentials} ->
         conn
