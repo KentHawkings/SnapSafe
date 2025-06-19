@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Phoenix Server",
+			"type": "shell",
+			"command": "mix phx.server",
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Credo",
+			"type": "shell",
+			"command": "mix credo",
+			"group": "test",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Code Quality Check",
+			"type": "shell",
+			"command": "mix quality",
+			"group": "test",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Dialyzer",
+			"type": "shell",
+			"command": "mix dialyzer",
+			"group": "test",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "Full Quality Check (CI)",
+			"type": "shell",
+			"command": "mix quality.ci",
+			"group": "test",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared"
+			},
+			"problemMatcher": []
+		}
+	]
+}
