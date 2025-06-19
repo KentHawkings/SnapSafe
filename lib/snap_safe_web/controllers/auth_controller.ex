@@ -6,6 +6,7 @@ defmodule SnapSafeWeb.AuthController do
 
   action_fallback SnapSafeWeb.FallbackController
 
+  @spec register(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def register(conn, %{"user" => user_params}) do
     case Accounts.register_user(user_params) do
       {:ok, user} ->
@@ -23,6 +24,7 @@ defmodule SnapSafeWeb.AuthController do
     end
   end
 
+  @spec login(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def login(conn, %{"email" => email, "password" => password}) do
     case Accounts.authenticate_user(email, password) do
       {:ok, user} ->

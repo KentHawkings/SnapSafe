@@ -5,6 +5,7 @@ defmodule SnapSafeWeb.FileController do
 
   action_fallback SnapSafeWeb.FallbackController
 
+  @spec upload(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def upload(conn, %{"file" => upload}) do
     user = conn.assigns.current_user
 
@@ -30,6 +31,7 @@ defmodule SnapSafeWeb.FileController do
     end
   end
 
+  @spec index(Plug.Conn.t(), any()) :: Plug.Conn.t()
   def index(conn, _params) do
     user = conn.assigns.current_user
     files = Files.list_user_files(user.id)
@@ -49,6 +51,7 @@ defmodule SnapSafeWeb.FileController do
     |> json(%{files: file_list})
   end
 
+  @spec show(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def show(conn, %{"id" => file_id}) do
     user = conn.assigns.current_user
 
